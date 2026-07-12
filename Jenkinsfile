@@ -5,7 +5,7 @@ pipeline {
 
         stage('pull scm git ') {
             steps {
-                git branch: 'main', url: 'https://github.com/PraveenKuber/Amazon-Jenkins.git'
+                git branch: 'main', url: 'https://github.com/vishal-dalawai98/Multibranch-jenkins.git'
             }
         }
         stage('compile ') {
