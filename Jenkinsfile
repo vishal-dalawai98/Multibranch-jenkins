@@ -1,39 +1,28 @@
 pipeline {
     agent any
-    }
+
     stages {
 
-        stage('pull scm git ') {
-            steps {
-                git branch: 'main', url: 'https://github.com/PraveenKuber/Amazon-Jenkins.git'
-            }
-        }
-        stage('compile ') {
+        stage('Compile') {
             steps {
                 sh 'mvn compile'
             }
         }
 
-        stage('build') {
+        stage('Build') {
             steps {
-                 sh 'mvn clean install'
+                sh 'mvn clean install'
             }
         }
-
-        
     }
 
-  post{
+    post {
+        success {
+            echo 'Build Success'
+        }
 
-  success{
-     echo 'Build success 1'
-  }
-    
-  failure{
-       echo 'Failure in the build'
-   }
-
-  }
-
-
+        failure {
+            echo 'Build Failed'
+        }
+    }
 }
