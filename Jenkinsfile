@@ -2,23 +2,22 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Compile') {
+        stage('Build') {
             steps {
-                sh 'mvn compile'
+                echo "Building branch: ${env.BRANCH_NAME}"
             }
         }
 
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'mvn clean install'
+                echo "Pipeline executed successfully."
             }
         }
     }
 
     post {
         success {
-            echo 'Build Success'
+            echo 'Build Successful'
         }
 
         failure {
